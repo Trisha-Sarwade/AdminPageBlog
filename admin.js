@@ -2,10 +2,10 @@
 const qlist = document.querySelector("#question-list");
 let noQuestion;
 
-document.addEventListener("keypress", function (event) {
-  console.log(event);
-  if (event.key === " ") {
-    const html = `
+document.querySelector(".QAdd").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  const html = `
 <div class="mb-3">
     <label for="cat_title" class="form-label">Question Summary</label>
     <input type="text" class="form-control" id="cat_title" name ="cat_title"  aria-describedby="emailHelp">
@@ -22,9 +22,8 @@ document.addEventListener("keypress", function (event) {
     <div id="emailHelp" class="form-text">The answer given</div>
 </div>`;
 
-    noQuestion = Number(document.querySelector("#QuestionNo").value);
-    for (let i = 0; i < noQuestion; i++) {
-      qlist.insertAdjacentHTML("afterbegin", html);
-    }
+  noQuestion = Number(document.querySelector("#QuestionNo").value);
+  for (let i = 0; i < noQuestion; i++) {
+    qlist.insertAdjacentHTML("afterbegin", html);
   }
 });
